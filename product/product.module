@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function product_theme():array {
+  return [
+    'node__product' => [
+      'base hook' => 'node',
+    ],
+  ];
+}

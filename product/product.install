@@ -1,0 +1,43 @@
+<?php
+use \Drupal\node\Entity\Node;
+use \Drupal\file\Entity\File;
+/**
+* Implements hook_install().
+*/
+function product_install() {
+
+  $data = file_get_contents(__DIR__ . '/assets/unicorn.jpg');
+  $file = file_save_data($data, 'public://unicorn.jpg');
+
+  $node = Node::create([
+    'type' => 'product',
+    'title' => 'Unicorn Iron On Patch',
+    'uid' => 1,
+    'body' => [
+      'value' => "<p>Size: 4 inch X 4 inch<br />
+  <br />
+  IRON-ON INSTRUCTIONS<br />
+  1. Spray water on the back of embroidery.<br />
+  2. Place embroidery on garment.<br />
+  3. Set iron temperature for cotton.<br />
+  4. Cover embroidery with a piece of damp cloth.<br />
+  5. Iron for 10-15 seconds.<br />
+  6. Turn garment inside out and iron until dry.<br />
+  <br />
+  Shipping: Patches will be sending out via USPS First Class Mail without tracing number</p>",
+      'format' => 'full_html',
+    ],
+    'field_product_image' => [
+      [
+        'target_id' => $file->id(),
+        'alt' => 'Unicorn',
+        'title' => 'Unicorn',
+      ],
+    ],
+    'field_app_purchase_link' => [
+      'uri' => 'https://google.com',
+    ]
+  ]);
+
+  $node->save();
+}

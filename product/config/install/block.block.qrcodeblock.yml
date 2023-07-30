@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - product
+  theme:
+    - olivero
+id: qrcodeblock
+theme: olivero
+region: sidebar
+weight: -7
+provider: null
+plugin: qrcode
+settings:
+  id: qrcode
+  label: QRCodeBlock
+  label_display: visible
+  provider: product
+visibility: {  }

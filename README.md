@@ -1,6 +1,5 @@
-# d9_appstore
+# Appstore
 Modules repo for assignment
-
 
 1. Module to create product content type.
 2. Requires Drupal must be installed wia composer.
